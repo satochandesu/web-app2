@@ -1,0 +1,46 @@
+body{
+    background-color: #f5f5f5;
+}
+.top-page{
+    text-align: center;
+    color: white;
+    background-image: url('img/hero.jpg');
+    background-color:rgba(0, 0, 0, .6);
+    background-blend-mode:darken;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 3rem; 
+    min-height: 100vh;
+}
+.top-page-home{
+    text-align: center;
+    color: white;
+    background-image: url('img/home-top.jpg');
+    background-color:rgba(0, 0, 0, .6);
+    background-blend-mode:darken;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 3rem; 
+}
+.text-light-top{
+    margin: 3rem 1rem 0 1rem;
+}
+.text-light-bottom{
+    margin: .5rem 1rem 3rem 1rem;
+}
+.input-group{
+    width: 400px;
+    margin: 0 auto;
+}
+.select{
+    width: 300px;
+    margin-right: 1rem;
+}
+.posts-card{
+    padding: 1rem 2rem;
+    background-color: white;
+}
