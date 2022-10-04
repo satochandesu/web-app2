@@ -25,8 +25,11 @@ class DataUpdateRequest extends FormRequest
     {
         return [
             //
-            'pulse' => 'required|integer|min:2',
-            'fatigue' => 'required|integer|min:1',
+            'bt' => 'required|numeric|between:35.0,41.0',
+            'pulse' => 'required|integer|min:0',
+            'Trb_bw' => 'required|numeric|min:0',
+            'Tra_bw' => 'required|numeric|between:10,100',
+            'fatigue' => 'required|integer|between:0,10',
         ];
     }
 

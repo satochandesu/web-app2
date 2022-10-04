@@ -25,8 +25,11 @@ class StoreDatasRequest extends FormRequest
     {
         return [
             //
-                'pulse' => 'required|integer|min:2',
-                'fatigue' => 'required|integer|min:1',
+                'bt' => 'required|numeric|between:35.0,41.0',
+                'pulse' => 'required|integer|min:0',
+                'Trb_bw' => 'required|numeric|min:0',
+                'Tra_bw' => 'required|numeric|between:10,100',
+                'fatigue' => 'required|integer|between:0,10',
         ];
     }
         public function attributes()
@@ -34,8 +37,8 @@ class StoreDatasRequest extends FormRequest
         return [
             'bt' => '体温(朝)',
             'pulse' => '心拍数',
-            'Trb-bw' => '体重(Tr前)',
-            'Tra-bw' => '体重(Tr後)',
+            'Trb_bw' => '体重(Tr前)',
+            'Tra_bw' => '体重(Tr後)',
             'fatigue' => '疲労度',
         ];
     }

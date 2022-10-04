@@ -39,7 +39,7 @@
                             </div>
 
                            <div class="form-group d-flex flex-column flex-md-row mt-3">
-                                <label for="Trb_bw" class="col-md-4 col-form-label text-md-right">体重(Tr前)　</label>
+                                <label for="Trb_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング前)　</label>
                                 <div class="col-md-6">
                                     <input id="Trb_bw" type="text" class="form-control @error('Trb_bw') is-invalid @enderror" name="Trb_bw"  value ="{{ old('Trb_bw') }}" required autocomplete="Trb_bw" autofocus>
                                     @error('Trb_bw')
@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="form-group d-flex flex-column flex-md-row mt-1">
-                                <label for="Tra_bw" class="col-md-4 col-form-label text-md-right">体重(Tr後)　</label>
+                                <label for="Tra_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング後)　</label>
                                 <div class="col-md-6">
                                     <input id="Tra_bw" type="Tra_bw" class="form-control @error('Tra_bw') is-invalid @enderror" name="Tra_bw" value="{{ old('Tra_bw') }}" required autocomplete="Tra_bw" autofocus>
                                     @error('Tra_bw')
@@ -63,9 +63,22 @@
                             </div>
 
                             <div class="form-group d-flex flex-column flex-md-row mt-3">
-                                <label for="fatigue" class="col-md-4 col-form-label text-md-right">疲労度(Tr後)(1低 ~ 高10)　</label>
+                                <label for="fatigue" class="col-md-4 col-form-label text-md-right">疲労度(トレーニング後)(1低 ~ 高10)　</label>
+                                <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="fatigue" required autocomplete="new-fatigue" id="fatigue" name="fatigue" class="col-md-4 col-form-label text-md-right">
+                                    <option value="">クリックで入力</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
                                 <div class="col-md-6">
-                                    <input id="fatigue" type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="fatigue" required autocomplete="new-fatigue">
+                                    <!-- <input id="fatigue" type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="fatigue" required autocomplete="new-fatigue"> -->
                                     @error('fatigue')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

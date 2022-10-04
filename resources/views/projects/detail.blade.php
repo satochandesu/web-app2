@@ -11,8 +11,8 @@
               <th scope="col">日付</th>
               <th scope="col">朝体温</th>
               <th scope="col">脈拍<br>(20秒)</th>
-              <th scope="col">体重<br>(Tr前)</th>
-              <th scope="col">体重<br>(Tr後)</th>
+              <th scope="col">体重<br>(トレーニング前)</th>
+              <th scope="col">体重<br>(トレーニング後)</th>
               <th scope="col">疲労度<br>(1~10)</th>
           </tr>
       </thead>

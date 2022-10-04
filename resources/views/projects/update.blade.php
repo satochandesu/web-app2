@@ -41,7 +41,7 @@
                             </div>
 
                            <div class="form-group d-flex flex-column flex-md-row mt-3">
-                                <label for="Trb_bw" class="col-md-4 col-form-label text-md-right">体重(Tr前)　</label>
+                                <label for="Trb_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング前)　</label>
                                 <div class="col-md-6">
                                     <input id="Trb_bw" type="text" class="form-control @error('Trb_bw') is-invalid @enderror" 
                                     value="{{ old('Trb_bw', $datas->Trb_bw) }}" name="Trb_bw" required autocomplete="Trb_bw" autofocus>
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="form-group d-flex flex-column flex-md-row mt-1">
-                                <label for="Tra_bw" class="col-md-4 col-form-label text-md-right">体重(Tr後)　</label>
+                                <label for="Tra_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング後)　</label>
                                 <div class="col-md-6">
                                     <input id="Tra_bw" type="Tra_bw" class="form-control @error('Tra_bw') is-invalid @enderror" 
                                     value="{{ old('Tra_bw', $datas->Tra_bw) }}" name="Tra_bw" required autocomplete="Tra_bw" autofocus>
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group d-flex flex-column flex-md-row mt-3">
-                                <label for="fatigue" class="col-md-4 col-form-label text-md-right">疲労度(Tr後)(1低 ~ 高10)　</label>
+                                <label for="fatigue" class="col-md-4 col-form-label text-md-right">疲労度(トレーニング後)(1低 ~ 高10)　</label>
                                 <div class="col-md-6">
                                     <input id="fatigue" type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" 
                                     value="{{ old('fatigue', $datas->fatigue) }}" name="fatigue" required autocomplete="new-fatigue">
@@ -83,9 +83,7 @@
                             <a class="btn btn-secondary mr-2" href="{{ route('record.index') }}">
                                 キャンセル
                             </a>
-                                <div class="col-md-10 col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary">登録</button>
-                                </div>
+                            <button type="submit" class="btn btn-primary">登録</button>
                             </div>
                         </form>
         </div>
