@@ -17,7 +17,7 @@
                            <div class="form-group d-flex flex-column flex-md-row">
                                 <label for="bt" class="col-md-4 col-form-label text-md-right">体温(朝)　</label>
                                 <div class="col-md-6">
-                                    <input id="bt" type="bt" class="form-control  @error('bt') is-invalid @enderror" name="bt" required autocomplete="new-bt">
+                                    <input id="bt" type="bt" class="form-control  @error('bt') is-invalid @enderror" name="bt" value ="{{ old('bt') }}" required autocomplete="new-bt">
                                     @error('bt')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                             <div class="form-group d-flex flex-column flex-md-row mt-1">
                                 <label for="pulse" class="col-md-4 col-form-label text-md-right">朝の脈拍(20秒)　</label>
                                 <div class="col-md-6">
-                                    <input id="pulse" type="pulse" class="form-control  @error('pulse') is-invalid @enderror" name="pulse" required autocomplete="new-pulse">
+                                    <input id="pulse" type="pulse" class="form-control  @error('pulse') is-invalid @enderror" name="pulse"  value ="{{ old('pulse') }}" required autocomplete="new-pulse">
                                     @error('pulse')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -64,8 +64,8 @@
 
                             <div class="form-group d-flex flex-column flex-md-row mt-3">
                                 <label for="fatigue" class="col-md-4 col-form-label text-md-right">疲労度(トレーニング後)(1低 ~ 高10)　</label>
-                                <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="fatigue" required autocomplete="new-fatigue" id="fatigue" name="fatigue" class="col-md-4 col-form-label text-md-right">
-                                    <option value="">クリックで入力</option>
+                                <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="fatigue" value="{{ old('fatigue') }}" required autocomplete="new-fatigue" id="fatigue" name="fatigue" class="col-md-4 col-form-label text-md-right">
+                                    <option value="{{ old('fatigue') }}">クリックで入力</option>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>

@@ -37,9 +37,9 @@ class DataUpdateRequest extends FormRequest
     {
         return [
             'bt' => '体温(朝)',
-            'pulse' => '心拍数',
-            'Trb-bw' => '体重(Tr前)',
-            'Tra-bw' => '体重(Tr後)',
+            'pulse' => '朝の脈拍(20秒)',
+            'Trb_bw' => '体重(トレーニング前)',
+            'Tra_bw' => '体重(トレーニング後)',
             'fatigue' => '疲労度',
         ];
     }

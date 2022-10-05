@@ -68,9 +68,21 @@
 
                             <div class="form-group d-flex flex-column flex-md-row mt-3">
                                 <label for="fatigue" class="col-md-4 col-form-label text-md-right">疲労度(トレーニング後)(1低 ~ 高10)　</label>
+                                <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="fatigue" value="{{ old('fatigue') }}" required autocomplete="new-fatigue" id="fatigue" name="fatigue" class="col-md-4 col-form-label text-md-right">
+                                    <option value="{{ old('fatigue') }}">クリックで入力</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
                                 <div class="col-md-6">
-                                    <input id="fatigue" type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" 
-                                    value="{{ old('fatigue', $datas->fatigue) }}" name="fatigue" required autocomplete="new-fatigue">
+                                    <!-- <input id="fatigue" type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="fatigue" required autocomplete="new-fatigue"> -->
                                     @error('fatigue')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
