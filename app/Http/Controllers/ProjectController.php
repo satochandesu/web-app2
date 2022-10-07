@@ -8,11 +8,27 @@ use Illuminate\Support\Facades\Auth; // ここを追加
 use App\Http\Requests\StoreDatasRequest; // ここを追加
 use Illuminate\Support\Facades\DB; // ここを追加
 use Illuminate\Support\Facades\Log; // ここを追加
+use Illuminate\Support\Facades\Mail; //追記
+use App\Mail\TestMail; //追記
 use App\Http\Requests\DataUpdateRequest;
 
 class ProjectController extends Controller
 {
     //
+    public function preRegister(){
+        return view('projects.preRegister');
+    }
+
+    public function send(Request $request)
+    {
+        $name = $request->name;
+        $email = $request->email;
+
+        Mail::send(new TestMail($name, $email));
+
+        return view('projects.pre_register_check');
+    }
+
     public function home(){
         return view('projects.home');
     }

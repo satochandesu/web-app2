@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/preRegister',[ProjectController::class,'preRegister'])->name('preRegister');
+Route::get('/mail/send', 'ProjectController@send')->name('pre_register_check');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
