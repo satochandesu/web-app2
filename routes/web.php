@@ -18,12 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/preRegister',[ProjectController::class,'preRegister'])->name('preRegister');
-Route::get('/mail/send', 'ProjectController@send')->name('pre_register_check');
-
+Route::get('/register', function () {
+    return view('projects.register');
+});
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('projects.home');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('pre_register_check',[ProjectController::class,'pre_register_check'])->name('pre_register_check');
 
 Route::middleware('auth')->group(function(){
     Route::get('home',[ProjectController::class,'home'])->name('projects.home');

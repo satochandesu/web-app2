@@ -15,20 +15,9 @@ use App\Http\Requests\DataUpdateRequest;
 class ProjectController extends Controller
 {
     //
-    public function preRegister(){
-        return view('projects.preRegister');
-    }
-
-    public function send(Request $request)
-    {
-        $name = $request->name;
-        $email = $request->email;
-
-        Mail::send(new TestMail($name, $email));
-
+    public function pre_register_check(){
         return view('projects.pre_register_check');
     }
-
     public function home(){
         return view('projects.home');
     }

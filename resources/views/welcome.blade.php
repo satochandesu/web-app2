@@ -14,7 +14,7 @@
             @auth
                 <a href="http://localhost/home" class="btn btn-success">ホーム画面へ</a>
             @else
-                <a href ="http://localhost/preRegister" class="btn btn-success" >まずは無料で登録する(仮登録画面へ)</a>
+                <a href ="{{ route('register') }}" class="btn btn-success" >まずは無料で登録する</a>
             @endauth
         </div>
     </div>

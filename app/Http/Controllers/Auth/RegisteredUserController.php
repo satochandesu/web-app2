@@ -49,6 +49,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('projects.home');
+        return redirect()->route('pre_register_check');
     }
 }
