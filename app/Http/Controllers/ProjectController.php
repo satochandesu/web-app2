@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Data;
+use App\Models\Profiles;
 use Illuminate\Support\Facades\Auth; // ここを追加
 use App\Http\Requests\StoreDatasRequest; // ここを追加
 use Illuminate\Support\Facades\DB; // ここを追加
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Log; // ここを追加
 use Illuminate\Support\Facades\Mail; //追記
 use App\Mail\TestMail; //追記
 use App\Http\Requests\DataUpdateRequest;
+use App\Http\Requests\editProfile; // ここを追加
 
 class ProjectController extends Controller
 {
@@ -123,4 +125,29 @@ class ProjectController extends Controller
 
         return redirect()->route('record.index');
     }
+
+    // public function viewProfile($id){
+    //     $profiles = Profiles::find($id);
+    //     return view('projects.viewProfile', compact('profiles'));
+    // }
+    // public function editProfile($id){
+    //     $profiles = Profiles::find($id);
+    //     return view('projects.editProfile', compact('profiles'));
+    // }
+    // public function storeProfile(Request $request, $id)
+    // {
+    //     $profieles = Profiles::find($id);
+    //      $profiles->fill([
+    //          'profileName' => $request->profileName,
+    //          'sports' => $request->sports,
+    //          'team' => $request->team,
+    //          'number' => $request->number,
+    //          'position' => $request->position,
+    //          'profile_id' => Auth::id(),
+    //      ]);
+
+    //      $profieles->save();
+    //     return view('projects.viewProfile',$profieles->id);
+    // }
 }
+
