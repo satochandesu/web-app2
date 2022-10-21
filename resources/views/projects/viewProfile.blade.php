@@ -15,26 +15,24 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">NAME</th>
-                    <th scope="col">SPORTS</th>
-                    <th scope="col">TEAM</th>
-                    <th scope="col">Number</th>
-                    <th scope="col">Position</th>
+                    <th scope="col">名前</th>
+                    <th scope="col">スポーツ</th>
+                    <th scope="col">チーム</th>
+                    <th scope="col">背番号</th>
+                    <th scope="col">ポジション</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($profiles as $profile)
                     <tr>
-                        <td>{{ $profile->profileName }}</td>
-                        <td>{{ $profile->sports }}</td>
-                        <td>{{ $profile->team }}</td>
-                        <td>{{ $profile->number }}</td>
-                        <td>{{ $profile->position }}</td>
+                        <td> {{ $profile->profileName }} </td>
+                        <td> {{ $profile->sports }} </td>
+                        <td> {{ $profile->team }} </td>
+                        <td> {{ $profile->number }} </td>
+                        <td> {{ $profile->position }} </td>
                     </tr>
-                @endforeach
                 </tbody>
             </table>
 
-            <a href="{{ route('editProfile',$profiles->id) }}">編集</button>
+            <a href="{{ route('create_profile') }}">編集</button>
     </div>
 @endsection

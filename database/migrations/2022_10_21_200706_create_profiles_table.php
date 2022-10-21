@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profile_tables', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
                 $table->id();
                 $table->bigInteger('profile_id')->unsigned(); 
                 $table->string('profileName'); // ここを追加
@@ -22,7 +22,6 @@ return new class extends Migration
                 $table->integer('number');
                 $table->string('position');  
                 $table->timestamps();
-            
                 // 外部キーの設定
                 $table->foreign('profile_id')->references('user_id')->on('datas'); 
         });
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_tables');
+        Schema::dropIfExists('profiles');
     }
 };

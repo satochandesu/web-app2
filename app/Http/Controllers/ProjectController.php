@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Data;
-use App\Models\Profiles;
+use App\Models\User;
+use App\Models\Profile; // ここを追加
 use Illuminate\Support\Facades\Auth; // ここを追加
 use App\Http\Requests\StoreDatasRequest; // ここを追加
 use Illuminate\Support\Facades\DB; // ここを追加
@@ -126,28 +127,30 @@ class ProjectController extends Controller
         return redirect()->route('record.index');
     }
 
-    // public function viewProfile($id){
-    //     $profiles = Profiles::find($id);
-    //     return view('projects.viewProfile', compact('profiles'));
-    // }
-    // public function editProfile($id){
-    //     $profiles = Profiles::find($id);
-    //     return view('projects.editProfile', compact('profiles'));
-    // }
-    // public function storeProfile(Request $request, $id)
-    // {
-    //     $profieles = Profiles::find($id);
-    //      $profiles->fill([
-    //          'profileName' => $request->profileName,
-    //          'sports' => $request->sports,
-    //          'team' => $request->team,
-    //          'number' => $request->number,
-    //          'position' => $request->position,
-    //          'profile_id' => Auth::id(),
-    //      ]);
+    public function profile_show()
+    {
+        $profile = Auth::user()->profile;
+        return view('projects.viewProfile', compact('profile'));
+    }
 
-    //      $profieles->save();
-    //     return view('projects.viewProfile',$profieles->id);
-    // }
+    public function create_profile()
+    {
+        return view('projects.editProfile');
+    }
+
+    public function store_profile(Request $request)
+    {
+        $profile = Profile::create([
+            'profile_id' => Auth::id(),
+            'profileName' => $request->name,
+            'sports' => $request->sports,
+            'team' => $request->team,
+            'number' => $request->number,
+            'position' => $request->position,
+        ]);
+
+        return view('projects.viewProfile');
+    }
+
 }
 

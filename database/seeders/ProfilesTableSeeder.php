@@ -16,18 +16,16 @@ class ProfilesTableSeeder extends Seeder
     public function run()
     {
         //
-        // usersテーブルから1つのデータを取得
+         // usersテーブルから1つのデータを取得
         $user = DB::table('users')->first();
 
-        DB::table('profile_tables')->insert([
-            'profileName' => 'satoshi',
+        DB::table('profiles')->insert([
             'profile_id' => $user->id,
             'profileName' => 'satoshi',
             'sports' => 'soccer',
             'team' => 'fukushima',
             'number' => 1,
             'position' => 'gk',
-            'profileName' => 'satoshi',
             'created_at' => date('Y-m-d H:i:s'),
         ]);
     }

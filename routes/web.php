@@ -39,9 +39,9 @@ Route::middleware('auth')->group(function(){
     
     Route::get('/article/delete/{id}', [ProjectController::class, 'record_delete'])->name('record_delete');
 
-    // Route::get('/profile/{id}', [ProjectController::class, 'viewProfile'])->name('viewProfile'); // ここを追加
-    // Route::get('/profile/edit/{id}',[ProjectController::class,'editProfile'])->name('editProfile');
-    // Route::get('/profile/store/{id}', [ProjectController::class,'storeProfile'])->name('storeProfile'); // ここを追加
+    Route::get('/profile', [ProjectController::class, 'profile_show'])->name('profile');
+    Route::get('/profile/create', [ProjectController::class, 'create_profile'])->name('create_profile');
+    Route::get('/profile/create/store', [ProjectController::class, 'store_profile'])->name('store_profile');
 });
 
 require __DIR__.'/auth.php';
