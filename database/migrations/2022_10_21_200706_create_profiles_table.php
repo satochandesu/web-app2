@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {
-                $table->id();
-                $table->bigInteger('profile_id')->unsigned(); 
-                $table->string('profileName'); // ここを追加
-                $table->string('sports'); 
-                $table->string('team'); 
-                $table->integer('number');
-                $table->string('position');  
-                $table->timestamps();
+            $table->id();
+            $table->bigInteger('profile_id')->unsigned(); 
+            $table->string('profileName'); // ここを追加
+            $table->string('sports'); 
+            $table->string('team'); 
+            $table->integer('number');
+            $table->string('position');  
+            $table->timestamps();
                 // 外部キーの設定
-                $table->foreign('profile_id')->references('user_id')->on('datas'); 
+            $table->foreign('profile_id')->references('id')->on('users'); 
         });
     }
 

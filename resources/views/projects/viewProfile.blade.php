@@ -23,13 +23,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                @foreach ($profiles as $profile)
                     <tr>
-                        <td> {{ $profile->profileName }} </td>
-                        <td> {{ $profile->sports }} </td>
-                        <td> {{ $profile->team }} </td>
-                        <td> {{ $profile->number }} </td>
-                        <td> {{ $profile->position }} </td>
+                        <td>{{ $profile->profileName }}</td>
+                        <td>{{ $profile->sports }}</td>
+                        <td>{{ $profile->team }}</td>
+                        <td>{{ $profile->number }}</td>
+                        <td>{{ $profile->position }}</td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
 

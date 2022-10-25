@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function(){
     
     Route::get('/article/delete/{id}', [ProjectController::class, 'record_delete'])->name('record_delete');
 
-    Route::get('/profile', [ProjectController::class, 'profile_show'])->name('profile');
+    Route::get('/profile/{id}', [ProjectController::class, 'profile_show'])->name('profile');
     Route::get('/profile/create', [ProjectController::class, 'create_profile'])->name('create_profile');
     Route::get('/profile/create/store', [ProjectController::class, 'store_profile'])->name('store_profile');
 });

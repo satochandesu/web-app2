@@ -16,7 +16,14 @@ class Profile extends Model
         'team',
         'number',
         'position',
-];
-
+    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function datas()
+    {
+        return $this->hasMany(Data::class);
+    }
 }
 

@@ -22,7 +22,8 @@ class ProjectController extends Controller
         return view('projects.pre_register_check');
     }
     public function home(){
-        return view('projects.home');
+        $user = Auth::user();
+        return view('projects.home',compact('user'));
     }
 
     public function record(){
@@ -127,10 +128,10 @@ class ProjectController extends Controller
         return redirect()->route('record.index');
     }
 
-    public function profile_show()
+    public function profile_show($id)
     {
-        $profile = Auth::user()->profile;
-        return view('projects.viewProfile', compact('profile'));
+        $profiles = Profile::find($id);
+        return view('projects.viewProfile', compact('profiles'));
     }
 
     public function create_profile()
@@ -140,15 +141,14 @@ class ProjectController extends Controller
 
     public function store_profile(Request $request)
     {
-        $profile = Profile::create([
-            'profile_id' => Auth::id(),
+        $profiles = Profile::create([
             'profileName' => $request->name,
             'sports' => $request->sports,
             'team' => $request->team,
             'number' => $request->number,
             'position' => $request->position,
+            'profile_id' => Auth::id(),
         ]);
-
         return view('projects.viewProfile');
     }
 
