@@ -12,7 +12,7 @@
         </div>
         
         <div class="card-body">
-                        <form method="get" action="{{ route('store_profile') }}">
+                        <form method="post" action="{{ route('store_profile',$profile_id) }}">
                            @csrf
                            <div class="form-group d-flex flex-column flex-md-row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">名前　</label>

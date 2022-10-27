@@ -23,7 +23,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($profiles as $profile)
                     <tr>
                         <td>{{ $profile->profileName }}</td>
                         <td>{{ $profile->sports }}</td>
@@ -31,10 +30,8 @@
                         <td>{{ $profile->number }}</td>
                         <td>{{ $profile->position }}</td>
                     </tr>
-                @endforeach
                 </tbody>
             </table>
-
-            <a href="{{ route('create_profile') }}">編集</button>
+           <a href ="{{ route('create_profile', $profile_id)}}">編集</a>
     </div>
 @endsection
