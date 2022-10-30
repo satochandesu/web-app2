@@ -41,7 +41,10 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/profile/{id}', [ProjectController::class, 'profile_show'])->name('profile');
     Route::get('/profile/create/{id}', [ProjectController::class, 'create_profile'])->name('create_profile');
-    Route::post('/profile/create/store/{id}', [ProjectController::class, 'store_profile'])->name('store_profile');
+    Route::post('/profile/store/{id}', [ProjectController::class, 'store_profile'])->name('store_profile');
+    
+    Route::get('/profile/update/{id}', [ProjectController::class, 'update_profile'])->name('update_profile');
+    Route::post('/profile/storeUpdate/{id}', [ProjectController::class, 'storeUpdate_profile'])->name('storeUpdate_profile');
 });
 
 require __DIR__.'/auth.php';

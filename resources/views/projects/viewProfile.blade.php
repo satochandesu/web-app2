@@ -32,6 +32,6 @@
                     </tr>
                 </tbody>
             </table>
-           <a href ="{{ route('create_profile', $profile_id)}}">編集</a>
+           <a href ="{{ route('update_profile', Auth::user()->id)}}">編集</a>
     </div>
 @endsection

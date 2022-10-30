@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log; // ここを追加
 use Illuminate\Support\Facades\Mail; //追記
 use App\Mail\TestMail; //追記
 use App\Http\Requests\DataUpdateRequest;
+use App\Http\Requests\storeProfileRequest;
 use App\Http\Requests\editProfile; // ここを追加
 
 class ProjectController extends Controller
@@ -129,11 +130,10 @@ class ProjectController extends Controller
 
     public function profile_show($id)
     {
-        $profile_id = $id;
-        $profile = Profile::find($profile_id);
-        return view('projects.viewProfile', compact('profile_id','profile'));
+        $profile = Profile::where('profile_id' , '=', $id)->first();
+        return view('projects.viewProfile',compact('profile'));
     }
-    
+
     public function create_profile($id)
     {
         $profile_id = $id;
@@ -153,12 +153,29 @@ class ProjectController extends Controller
         ]);
         return redirect()->route('profile', [
             'id' => $profile_id,
+        ]);
+    }
+    public function update_profile($id)
+    {
+        // 渡されてきた記事IDのデータを取得
+        $profile = Profile::where('profile_id' , '=', $id)->first();
+
+        return view('projects.updateProfile', compact('profile'));
+    }
+    public function storeUpdate_profile(Request $request, $id)
+    {
+        $profile = Profile::where('profile_id' , '=', $id)->first();
+        $profile ->fill([
             'profileName' => $request->name,
             'sports' => $request->sports,
             'team' => $request->team,
             'number' => $request->number,
             'position' => $request->position,
+            'profile_id' => Auth::id(),
         ]);
+        // 保存処理
+        $profile->save();
+        return redirect()->route('profile', $id);
     }
 
 }
