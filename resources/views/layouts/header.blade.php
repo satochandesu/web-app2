@@ -11,7 +11,7 @@
                     @auth
                         <a class="mr-lg-3 my-lg-0 my-3 btn btn-sm btn-dark text-light nav-item nav-link" href="{{ route('record.index') }}">コンディション記録</a>
                         <a class="mr-lg-3 my-lg-0 my-3 btn btn-sm btn-dark text-light nav-item nav-link" href="{{ route('projects.home') }}">コンディション入力</a>
-                        <a class="mr-lg-3 my-lg-0 my-3 btn btn-sm btn-dark text-light nav-item nav-link" href="{{ route('create_profile',Auth::user()->id) }}"><i class="far fa-user mr-1"></i>プロフィール</a>
+                        <a class="mr-lg-3 my-lg-0 my-3 btn btn-sm btn-dark text-light nav-item nav-link" href="{{ route('profile',Auth::user()->id) }}"><i class="far fa-user mr-1"></i>プロフィール</a>
                         
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
