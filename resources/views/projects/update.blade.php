@@ -91,7 +91,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group d-flex mt-3 mb-0">
+                            <div class="form-group d-flex flex-column flex-md-row mt-3">
+                                <label for="training" class="col-md-4 col-form-label text-md-right">トレーニング　</label>
+                                <div class="col-md-6">
+                                    <textarea id="training" type="training" class="form-control @error('training') is-invalid @enderror" name="training" required autocomplete="training" rows="5" autofocus>{{ old('training', $datas->training) }}</textarea>
+                                    @error('training')
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                      </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group d-flex justify-content-center mt-3 mb-0">
                             <a class="btn btn-secondary mr-2" href="{{ route('record.index') }}">
                                 キャンセル
                             </a>

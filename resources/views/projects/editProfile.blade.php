@@ -72,8 +72,7 @@
                                       </span>
                                     @enderror                                    
                                 </div>
-                            </div>
-
+                            </div>                            
                             <div class="form-group d-flex mt-3 mb-0">
                                 <div class="col-md-10 col-12 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">編集完了</button>

@@ -30,6 +30,8 @@ class StoreDatasRequest extends FormRequest
                 'Trb_bw' => 'required|numeric|min:0',
                 'Tra_bw' => 'required|numeric|between:10,100',
                 'fatigue' => 'required|integer|between:0,10',
+                'training' => 'required|string',
+                
         ];
     }
         public function attributes()
@@ -40,6 +42,7 @@ class StoreDatasRequest extends FormRequest
             'Trb_bw' => '体重(トレーニング前)',
             'Tra_bw' => '体重(トレーニング後)',
             'fatigue' => '疲労度',
+            'training' => 'トレーニング',
         ];
     }
 }

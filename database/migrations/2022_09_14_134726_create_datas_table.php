@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('pulse')->length(2); 
             $table->double('Trb_bw',3,1); 
             $table->double('Tra_bw',3,1); 
-            $table->integer('fatigue')->length(2); 
+            $table->integer('fatigue')->length(2);
+            $table->string('training'); 
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users'); 

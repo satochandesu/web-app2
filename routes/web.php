@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function(){
     
     Route::get('/profile/update/{id}', [ProjectController::class, 'update_profile'])->name('update_profile');
     Route::post('/profile/storeUpdate/{id}', [ProjectController::class, 'storeUpdate_profile'])->name('storeUpdate_profile');
+
+    Route::get('/profile/search/{id}', [ProjectController::class, 'search'])->name('search');
 });
 
 require __DIR__.'/auth.php';

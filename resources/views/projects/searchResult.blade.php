@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-    コンディション記録
+    検索結果
 @endsection
 
 @section('content')
@@ -12,13 +12,14 @@
         </div>
     </div>
     <div class="container pt-5 pb-5">
-        <div class="pb-3">
+        <div class="pb-2">
         <form action="{{ route('search',Auth::user()->id) }}" method="GET">
             <h3>トレーニング内容や数値を検索</h3>
-            <input type="search" name="keyword" value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
+            <input type="text" name="keyword" value="{{ $keyword }}" placeholder="日時検索は 年-月-日">
             <input type="submit" value="検索">
         </form>
         </div>
+        <p><h4>{{ $keyword }}</h4>の検索結果</p>
     <table class="table table-bordered table-hover ">
      <thead class="bg-info text-light">
           <tr>
@@ -31,14 +32,14 @@
           </tr>
       </thead>
       <tbody>
-            @foreach ($datas as $data)
+            @foreach ($seaches as $seach)
             <tr>
-              <td><a href="{{ route('showData',$data->id) }}"> {{ $data->created_at }} <br>トレーニング内容</a></td>
-              <td> {{ $data->bt }} </td>
-              <td> {{ $data->pulse }} </td>
-              <td> {{ $data->Trb_bw }}</td>
-              <td> {{ $data->Tra_bw }}</td>
-              <td> {{ $data->fatigue }}</td>
+              <td><a href="{{ route('showData',$seach->id) }}"> {{ $seach->created_at }} <br>トレーニング内容</a></td>
+              <td> {{ $seach->bt }} </td>
+              <td> {{ $seach->pulse }} </td>
+              <td> {{ $seach->Trb_bw }}</td>
+              <td> {{ $seach->Tra_bw }}</td>
+              <td> {{ $seach->fatigue }}</td>
             </tr>
             @endforeach
       </tbody>

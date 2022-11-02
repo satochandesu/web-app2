@@ -27,6 +27,10 @@
             </tr>
       </tbody>
     </table>
+    <div class ="training m-2">
+      <h3>トレーニング内容</h3>
+      <p class ="training m-2">{{ $datas->training }}</p>
+    </div>
     <a href="{{ route('record.index') }}" class="m-3 btn btn-secondary">戻る</a>
     <a href="{{ route('record_update', $datas->id) }}" class="m-3 btn btn-secondary">変更</a>
     <a href="{{ route('record_delete', $datas->id) }}" class="m-3 btn btn-secondary">削除</a>

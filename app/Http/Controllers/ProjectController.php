@@ -41,6 +41,7 @@ class ProjectController extends Controller
                 'Trb_bw' => $request->Trb_bw,
                 'Tra_bw' => $request->Tra_bw,
                 'fatigue' => $request->fatigue,
+                'training' => $request->training,
                 'user_id' => Auth::id(),
             ]);
             DB::commit();
@@ -84,6 +85,7 @@ class ProjectController extends Controller
                 'Trb_bw' => $request->Trb_bw,
                 'Tra_bw' => $request->Tra_bw,
                 'fatigue' => $request->fatigue,
+                'training' => $request->training,
             ]);
 
             // 保存処理
@@ -142,15 +144,23 @@ class ProjectController extends Controller
 
     public function store_profile(Request $request, $id)
     {
-        $profile_id = $id;
-        $profiles = Profile::create([
-            'profileName' => $request->name,
-            'sports' => $request->sports,
-            'team' => $request->team,
-            'number' => $request->number,
-            'position' => $request->position,
-            'profile_id' => Auth::id(),
+        DB::beginTransaction();
+        try{
+            $profile_id = $id;
+            $profiles = Profile::create([
+                'profileName' => $request->name,
+                'sports' => $request->sports,
+                'team' => $request->team,
+                'number' => $request->number,
+                'position' => $request->position,
+                'profile_id' => Auth::id(),
         ]);
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::debug($e);
+            abort(500);
+        }
         return redirect()->route('profile', [
             'id' => $profile_id,
         ]);
@@ -164,6 +174,8 @@ class ProjectController extends Controller
     }
     public function storeUpdate_profile(Request $request, $id)
     {
+        DB::beginTransaction();
+        try{
         $profile = Profile::where('profile_id' , '=', $id)->first();
         $profile ->fill([
             'profileName' => $request->name,
@@ -173,10 +185,34 @@ class ProjectController extends Controller
             'position' => $request->position,
             'profile_id' => Auth::id(),
         ]);
-        // 保存処理
-        $profile->save();
+            DB::commit();
+            // 保存処理
+            $profile->save();
+        }catch(\Exception $e){
+            DB::rollBack();
+            Log::debug($e);
+            abort(500);
+        }
         return redirect()->route('profile', $id);
     }
+    
+    public function search(Request $request, $id)
+    {
+        $keyword = $request->input('keyword');
+        $query = Data::query();
+        
+        if(!empty($keyword)) {
+            $query->orwhere('bt', 'LIKE', "%{$keyword}%");
+            $query->orWhere('pulse', 'LIKE', "%{$keyword}%");
+            $query->orWhere('Trb_bw', 'LIKE', "%{$keyword}%");
+            $query->orWhere('Tra_bw', 'LIKE', "%{$keyword}%");
+            $query->orWhere('fatigue', 'LIKE', "%{$keyword}%");
+            $query->orWhere('training', 'LIKE', "%{$keyword}%");
+            $query->orWhere('created_at', 'LIKE', "%{$keyword}%");
+        }
+        $seaches = $query->get();
+        return view('projects.searchResult', compact('seaches', 'keyword'));
 
+    }
 }
 

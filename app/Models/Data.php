@@ -17,6 +17,7 @@ class Data extends Model
         'Trb_bw',
         'Tra_bw',
         'fatigue',
+        'training',
     ];
     public function user()
     {
