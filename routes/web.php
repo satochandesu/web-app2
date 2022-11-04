@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function(){
     Route::get('home/store', [ProjectController::class, 'store'])->name('projects.store'); 
     Route::get('/record', [ProjectController::class, 'record'])->name('record.index');
 
-    Route::get('/record/{id}', [ProjectController::class, 'showData'])->name('showData');
+    Route::get('/record/datas/{id}', [ProjectController::class, 'showData'])->name('showData');
     Route::get('/record/update/{id}', [ProjectController::class, 'record_update'])->name('record_update'); 
     Route::get('/record/edit/{id}', [ProjectController::class, 'update_store'])->name('record_updateStore');
     
@@ -41,12 +41,14 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/profile/{id}', [ProjectController::class, 'profile_show'])->name('profile');
     Route::get('/profile/create/{id}', [ProjectController::class, 'create_profile'])->name('create_profile');
-    Route::post('/profile/store/{id}', [ProjectController::class, 'store_profile'])->name('store_profile');
+    Route::get('/profile/store/{id}', [ProjectController::class, 'store_profile'])->name('store_profile');
     
     Route::get('/profile/update/{id}', [ProjectController::class, 'update_profile'])->name('update_profile');
     Route::post('/profile/storeUpdate/{id}', [ProjectController::class, 'storeUpdate_profile'])->name('storeUpdate_profile');
 
     Route::get('/profile/search/{id}', [ProjectController::class, 'search'])->name('search');
+
+    // Route::get('/chart/bt/{id}', [ProjectController::class, 'bt_chart'])->name('bt_chart');
 });
 
 require __DIR__.'/auth.php';

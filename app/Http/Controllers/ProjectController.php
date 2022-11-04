@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log; // ここを追加
 use Illuminate\Support\Facades\Mail; //追記
 use App\Mail\TestMail; //追記
 use App\Http\Requests\DataUpdateRequest;
-use App\Http\Requests\storeProfileRequest;
+use App\Http\Requests\ProfileRequest; // ここを追加
 use App\Http\Requests\editProfile; // ここを追加
 
 class ProjectController extends Controller
@@ -142,29 +142,37 @@ class ProjectController extends Controller
         return view('projects.editProfile',compact('profile_id'));
     }
 
-    public function store_profile(Request $request, $id)
+    public function store_profile(ProfileRequest $request, $id)
     {
+        // トランザクション開始
         DB::beginTransaction();
-        try{
-            $profile_id = $id;
+
+        try {
+            // タスク作成処理
             $profiles = Profile::create([
                 'profileName' => $request->name,
                 'sports' => $request->sports,
                 'team' => $request->team,
                 'number' => $request->number,
                 'position' => $request->position,
-                'profile_id' => Auth::id(),
-        ]);
+                'profile_id' => $id,
+            ]);
+
+            // トランザクションコミット
             DB::commit();
-        }catch(\Exception $e){
+        } catch(\Exception $e) {
+            // トランザクションロールバック
             DB::rollBack();
+
+            // ログ出力
             Log::debug($e);
+
+            // エラー画面遷移
             abort(500);
-        }
-        return redirect()->route('profile', [
-            'id' => $profile_id,
-        ]);
+        } 
+        return redirect()->route('profile');
     }
+    
     public function update_profile($id)
     {
         // 渡されてきた記事IDのデータを取得
@@ -214,5 +222,11 @@ class ProjectController extends Controller
         return view('projects.searchResult', compact('seaches', 'keyword'));
 
     }
+
+    // public function bt_chart($id){
+    //     $btChart_list = Data::where('user_id' , '=', $id)
+    //                         ->where("created_at","like",date("Y") . "%")->get();
+    //     return view('projects.bt_chart',compact('btChart_list'));
+    // }
 }
 

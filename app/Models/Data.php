@@ -11,6 +11,7 @@ class Data extends Model
 
     protected $table = 'datas';
     protected $fillable = [
+        'name',
         'bt',
         'user_id',
         'pulse',

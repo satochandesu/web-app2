@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('datas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned(); 
+            $table->bigInteger('user_id')->unsigned();
             $table->double('bt',3,1);
             $table->integer('pulse')->length(2); 
             $table->double('Trb_bw',3,1); 
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('training'); 
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users'); 
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
