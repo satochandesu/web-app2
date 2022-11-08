@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileRequest extends FormRequest
+class StoreUpdateProfile extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,7 @@ class ProfileRequest extends FormRequest
      */
     public function rules()
     {
-        
         return [
-
             'name' => 'required|string|max:255',
             'sports' => 'required|string|max:255',
             'team' => 'required|string|max:255',

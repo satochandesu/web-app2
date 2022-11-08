@@ -15,6 +15,7 @@ use App\Mail\TestMail; //追記
 use App\Http\Requests\DataUpdateRequest;
 use App\Http\Requests\ProfileRequest; // ここを追加
 use App\Http\Requests\editProfile; // ここを追加
+use App\Http\Requests\StoreUpdateProfile;
 
 class ProjectController extends Controller
 {
@@ -138,15 +139,13 @@ class ProjectController extends Controller
 
     public function create_profile($id)
     {
-        $profile_id = $id;
-        return view('projects.editProfile',compact('profile_id'));
+        return view('projects.editProfile',compact('id'));
     }
 
     public function store_profile(ProfileRequest $request, $id)
     {
         // トランザクション開始
         DB::beginTransaction();
-
         try {
             // タスク作成処理
             $profiles = Profile::create([
@@ -160,6 +159,7 @@ class ProjectController extends Controller
 
             // トランザクションコミット
             DB::commit();
+            
         } catch(\Exception $e) {
             // トランザクションロールバック
             DB::rollBack();
@@ -170,7 +170,10 @@ class ProjectController extends Controller
             // エラー画面遷移
             abort(500);
         } 
-        return redirect()->route('profile');
+        
+        return redirect()->route('profile', [
+            'id' => $id,
+        ]);
     }
     
     public function update_profile($id)
@@ -180,7 +183,7 @@ class ProjectController extends Controller
 
         return view('projects.updateProfile', compact('profile'));
     }
-    public function storeUpdate_profile(Request $request, $id)
+    public function storeUpdate_profile(StoreUpdateProfile $request, $id)
     {
         DB::beginTransaction();
         try{

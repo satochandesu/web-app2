@@ -21,9 +21,6 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('projects.register');
 });
-Route::get('/dashboard', function () {
-    return view('projects.editProfile');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('pre_register_check',[ProjectController::class,'pre_register_check'])->name('pre_register_check');
 
