@@ -17,6 +17,7 @@
             <h3>トレーニング内容や数値を検索</h3>
             <input type="search" name="keyword" value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
             <input type="submit" value="検索">
+
         </form>
         </div>
     <table class="table table-bordered table-hover ">

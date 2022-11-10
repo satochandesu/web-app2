@@ -4,6 +4,7 @@
     コンディション入力画面
 @endsection
 
+
 @section('content')
     <div class="top-page-home">
         <div class="register-title">
@@ -11,24 +12,48 @@
             <h3 class="text-light-bottom">今日のコンディションを入力しよう！</h3>
         </div>
     </div>
-    <h1>graph</h1>
-        ここにグラフを表示
-        {{ $btChart_list }}
-    	<canvas id="myChart"></canvas>
+	<body>
+		<h1>グラフ</h1>
+   	<canvas id="myChart"></canvas>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 	<!-- グラフを描画 -->
-   <!-- <script>
+   <script>
+	
 	//ラベル
-	var labels = [];
-    labels.push($btChart_list->created_at);
+	var labels = [
+		"2020年1月",
+		"2020年2月",
+		"2020年3月",
+		"2020年4月",
+		"2020年5月",
+		"2020年6月",
+	];
+	//平均体重ログ
+	var average_weight_log = [
+		50.0,	//1月のデータ
+		51.0,	//2月のデータ
+		52.0,	//3月のデータ
+		53.0,	//4月のデータ
+		54.0,	//5月のデータ
+		49.0	//6月のデータ
+	];
 	//最大体重ログ
-	var btChart = [
+	var max_weight_log = [
 		52.0,	//1月のデータ
 		54.0,	//2月のデータ
 		55.0,	//3月のデータ
 		51.0,	//4月のデータ
 		57.0,	//5月のデータ
 		48.0	//6月のデータ
+	];
+	//最小体重ログ
+	var min_weight_log = [
+		48.0,	//1月のデータ
+		47.0,	//2月のデータ
+		45.0,	//3月のデータ
+		44.0,	//4月のデータ
+		43.0,	//5月のデータ
+		49.0	//6月のデータ
 	];
 
 	//グラフを描画
@@ -39,9 +64,21 @@
 			labels: labels,
 			datasets: [
 				{
-					label: '朝の体温',
-					data: btChart,
+					label: '平均体重',
+					data: average_weight_log,
+					borderColor: "rgba(0,0,255,1)",
+         			backgroundColor: "rgba(0,0,0,0)"
+				},
+				{
+					label: '最大',
+					data: max_weight_log,
 					borderColor: "rgba(0,255,0,1)",
+         			backgroundColor: "rgba(0,0,0,0)"
+				},
+				{
+					label: '最小',
+					data: min_weight_log,
+					borderColor: "rgba(255,0,0,1)",
          			backgroundColor: "rgba(0,0,0,0)"
 				}
 			]
@@ -49,11 +86,11 @@
 		options: {
 			title: {
 				display: true,
-				text: '朝の体温'
+				text: '体重ログ（６ヶ月平均）'
 			}
 		}
    });
-   </script> -->
+   </script>
    <!-- グラフを描画ここまで -->
-
+ </body>S
 @endsection

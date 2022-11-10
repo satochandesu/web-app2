@@ -24,14 +24,43 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ $profile->profileName }}</td>
-                        <td>{{ $profile->sports }}</td>
-                        <td>{{ $profile->team }}</td>
-                        <td>{{ $profile->number }}</td>
-                        <td>{{ $profile->position }}</td>
+                        @if(isset($profile->profileName))
+                            <td>{{ $profile->profileName }}</td>
+                        @else
+                            <td><p>未設定</p></td>
+                        @endisset
+                        
+                        @if(isset($profile->sports))
+                            <td>{{ $profile->sports }}</td>
+                        @else
+                            <td><p>未設定</p></td>
+                        @endisset
+
+                        @if(isset($profile->team))
+                            <td>{{ $profile->team }}</td>
+                        @else
+                            <td><p>未設定</p></td>
+                        @endisset
+                        
+                        @if(isset($profile->number))
+                            <td>{{ $profile->number }}</td>
+                        @else
+                            <td><p>未設定</p></td>
+                        @endisset
+
+                        @if(isset($profile->position))
+                            <td>{{ $profile->position }}</td>
+                        @else
+                            <td><p>未設定</p></td>
+                        @endisset
                     </tr>
                 </tbody>
             </table>
-           <a href ="{{ route('update_profile', Auth::user()->id)}}">編集</a>
+            
+            @if(isset($profile->profileName))
+            <a class="btn btn-sm btn-primary text-light nav-item nav-link" href ="{{ route('update_profile', Auth::user()->id)}}">編集</a>
+            @else
+            <a class="btn btn-sm btn-primary text-light nav-item nav-link" href ="{{ route('create_profile', Auth::user()->id)}}">プロフィールを設定</a>
+            @endif
     </div>
 @endsection

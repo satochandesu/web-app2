@@ -209,27 +209,21 @@ class ProjectController extends Controller
     
     public function search(Request $request, $id)
     {
-        $keyword = $request->input('keyword');
         $query = Data::query();
+        $keyword = $request->input('keyword');
         
         if(!empty($keyword)) {
-            $query->orwhere('bt', 'LIKE', "%{$keyword}%");
-            $query->orWhere('pulse', 'LIKE', "%{$keyword}%");
-            $query->orWhere('Trb_bw', 'LIKE', "%{$keyword}%");
-            $query->orWhere('Tra_bw', 'LIKE', "%{$keyword}%");
-            $query->orWhere('fatigue', 'LIKE', "%{$keyword}%");
-            $query->orWhere('training', 'LIKE', "%{$keyword}%");
-            $query->orWhere('created_at', 'LIKE', "%{$keyword}%");
+            $query->where('bt', 'LIKE', "%{$keyword}%");
+            $query->orwhere('pulse', 'LIKE', "%{$keyword}%");
+            $query->orwhere('Trb_bw', 'LIKE', "%{$keyword}%");
+            $query->orwhere('Tra_bw', 'LIKE', "%{$keyword}%");
+            $query->orwhere('fatigue', 'LIKE', "%{$keyword}%");
+            $query->orwhere('training', 'LIKE', "%{$keyword}%");
+            $query->orwhere('created_at', 'LIKE', "%{$keyword}%");
         }
         $seaches = $query->get();
         return view('projects.searchResult', compact('seaches', 'keyword'));
 
     }
-
-    // public function bt_chart($id){
-    //     $btChart_list = Data::where('user_id' , '=', $id)
-    //                         ->where("created_at","like",date("Y") . "%")->get();
-    //     return view('projects.bt_chart',compact('btChart_list'));
-    // }
 }
 
