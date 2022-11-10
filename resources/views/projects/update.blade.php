@@ -18,7 +18,7 @@
                                 <label for="bt" class="col-md-4 col-form-label text-md-right">体温(朝)　</label>
                                 <div class="col-md-6">
                                     <input id="bt" type="bt" class="form-control  @error('bt') is-invalid @enderror" name="bt"
-                                    value="{{ old('bt', $datas->bt) }}" required autocomplete="new-bt">
+                                    value="{{ old('bt') }}" required autocomplete="new-bt">
                                     @error('bt')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -31,7 +31,7 @@
                                 <label for="pulse" class="col-md-4 col-form-label text-md-right">朝の脈拍(20秒)　</label>
                                 <div class="col-md-6">
                                     <input id="pulse" type="pulse" class="form-control  @error('pulse') is-invalid @enderror" 
-                                    value="{{ old('pulse', $datas->pulse) }}" name="pulse" required autocomplete="new-pulse">
+                                    value="{{ old('pulse') }}" name="pulse" required autocomplete="new-pulse">
                                     @error('pulse')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                                 <label for="Trb_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング前)　</label>
                                 <div class="col-md-6">
                                     <input id="Trb_bw" type="text" class="form-control @error('Trb_bw') is-invalid @enderror" 
-                                    value="{{ old('Trb_bw', $datas->Trb_bw) }}" name="Trb_bw" required autocomplete="Trb_bw" autofocus>
+                                    value="{{ old('Trb_bw') }}" name="Trb_bw" required autocomplete="Trb_bw" autofocus>
                                     @error('Trb_bw')
                                       <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
                                 <label for="Tra_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング後)　</label>
                                 <div class="col-md-6">
                                     <input id="Tra_bw" type="Tra_bw" class="form-control @error('Tra_bw') is-invalid @enderror" 
-                                    value="{{ old('Tra_bw', $datas->Tra_bw) }}" name="Tra_bw" required autocomplete="Tra_bw" autofocus>
+                                    value="{{ old('Tra_bw') }}" name="Tra_bw" required autocomplete="Tra_bw" autofocus>
                                     @error('Tra_bw')
                                       <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -94,7 +94,7 @@
                             <div class="form-group d-flex flex-column flex-md-row mt-3">
                                 <label for="training" class="col-md-4 col-form-label text-md-right">トレーニング　</label>
                                 <div class="col-md-6">
-                                    <textarea id="training" type="training" class="form-control @error('training') is-invalid @enderror" name="training" required autocomplete="training" rows="5" autofocus>{{ old('training', $datas->training) }}</textarea>
+                                    <textarea id="training" type="training" class="form-control @error('training') is-invalid @enderror" name="training" required autocomplete="training" rows="5" autofocus>{{ old('training') }}</textarea>
                                     @error('training')
                                       <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
