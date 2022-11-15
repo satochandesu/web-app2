@@ -210,19 +210,27 @@ class ProjectController extends Controller
     public function search(Request $request, $id)
     {
         $query = Data::query();
-        $keyword = $request->input('keyword');
+        $training_date = $request->input('training_date');
+        $training_fatigue = $request->input('training_fatigue');
+        $search_training = $request->input('search_training');
         
-        if(!empty($keyword)) {
-            $query->where('bt', 'LIKE', "%{$keyword}%");
-            $query->orwhere('pulse', 'LIKE', "%{$keyword}%");
-            $query->orwhere('Trb_bw', 'LIKE', "%{$keyword}%");
-            $query->orwhere('Tra_bw', 'LIKE', "%{$keyword}%");
-            $query->orwhere('fatigue', 'LIKE', "%{$keyword}%");
-            $query->orwhere('training', 'LIKE', "%{$keyword}%");
-            $query->orwhere('created_at', 'LIKE', "%{$keyword}%");
+        if (isset($training_date)) {
+            $query->where('user_id', 'LIKE', "%{$id}%");
+            $query->where('created_at', 'LIKE', "%{$training_date}%");
         }
+
+        if (isset($training_fatigue)) {
+            $query->where('user_id', 'LIKE', "%{$id}%");
+            $query->where('fatigue', $training_fatigue);
+        }
+
+        if (isset($search_training)) {
+            $query->where('user_id', 'LIKE', "%{$id}%");
+            $query->where('training', $search_training);
+        }
+        
         $seaches = $query->get();
-        return view('projects.searchResult', compact('seaches', 'keyword'));
+        return view('projects.searchResult', compact('training_date', 'training_fatigue','search_training','seaches'));
 
     }
 }
