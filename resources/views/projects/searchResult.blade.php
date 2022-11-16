@@ -16,11 +16,12 @@
         <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex justify-container-flex-end align-items-top mb-5">
                 <div class="search-date mr-5">
                     <h4>トレーニング日付検索</h4>
-                    <input type="search" name="training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
+                    <input type="date" name="training_date" value="{{ $training_date }}">
                 </div>
                 <div class="search-fatigue mr-5">
                     <h4>疲労度検索</h4>
-                    <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="training_fatigue"  autocomplete="new-fatigue" id="fatigue" name="fatigue">
+                    <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" value="{{ $training_fatigue }}" name="training_fatigue"  autocomplete="new-fatigue" id="fatigue" name="fatigue">
+                        <option>{{ $training_fatigue }}</option>
                         <option></option>
                         <option value="1" @if( old('fatigue') ==  "1") selected @endif>1</option>
                         <option value="2" @if( old('fatigue') ==  "2") selected @endif>2</option>
@@ -37,7 +38,7 @@
 
                 <div class="search_training mr-5">
                     <h4>トレーニング内容検索</h4>
-                    <input type="search" name="search_training"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="トレーニング内容">
+                    <input type="search" name="search_training"  value="{{ $search_training }}" placeholder="トレーニング内容">
                 </div> 
                 <input type="submit" class="ml-3 btn btn-primary" value="検索">
             </form>

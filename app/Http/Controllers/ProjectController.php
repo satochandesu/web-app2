@@ -226,7 +226,7 @@ class ProjectController extends Controller
 
         if (isset($search_training)) {
             $query->where('user_id', 'LIKE', "%{$id}%");
-            $query->where('training', $search_training);
+            $query->where('training', 'LIKE', "%{$search_training}%")->get();
         }
         
         $seaches = $query->get();

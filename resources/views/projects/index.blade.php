@@ -15,7 +15,7 @@
             <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex justify-container-flex-end align-items-top mb-5">
                 <div class="search-date mr-5">
                     <h4>トレーニング日付検索</h4>
-                    <input type="search" name="training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
+                    <input type="date" class="form-control" name="training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
                 </div>
                 <div class="search-fatigue mr-5">
                     <h4>疲労度検索</h4>
