@@ -34,6 +34,7 @@ class ProjectController extends Controller
 
     public function store(StoreDatasRequest $request)
     {
+        $profile = Profile::where('profile_id' , '=', Auth::id())->first();
         DB::beginTransaction();
         try{
             $datas = Data::create([
@@ -44,6 +45,7 @@ class ProjectController extends Controller
                 'fatigue' => $request->fatigue,
                 'training' => $request->training,
                 'user_id' => Auth::id(),
+                'name' => $profile->profileName,
             ]);
             DB::commit();
         }catch(\Exception $e){
@@ -213,6 +215,7 @@ class ProjectController extends Controller
         $training_date = $request->input('training_date');
         $training_fatigue = $request->input('training_fatigue');
         $search_training = $request->input('search_training');
+        $data_name = $request->input('data_name');
         
         if (isset($training_date)) {
             $query->where('user_id', 'LIKE', "%{$id}%");
@@ -228,9 +231,13 @@ class ProjectController extends Controller
             $query->where('user_id', 'LIKE', "%{$id}%");
             $query->where('training', 'LIKE', "%{$search_training}%")->get();
         }
+
+        if (isset($data_name)) {
+            $query->where('name', 'LIKE', "%{$data_name}%")->get();
+        }
         
         $seaches = $query->get();
-        return view('projects.searchResult', compact('training_date', 'training_fatigue','search_training','seaches'));
+        return view('projects.searchResult', compact('training_date', 'training_fatigue','search_training','seaches','data_name'));
 
     }
 }

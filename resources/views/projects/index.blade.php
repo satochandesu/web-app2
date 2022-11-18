@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="container pt-5 pb-5">
-            <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex justify-container-flex-end align-items-top mb-5">
+            <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex align-items-end mb-5">
                 <div class="search-date mr-5">
                     <h4>トレーニング日付検索</h4>
                     <input type="date" class="form-control" name="training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
@@ -40,10 +40,19 @@
                 </div> 
                 <input type="submit" class="ml-3 btn btn-primary" value="検索">
             </form>
+
+            <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex mb-3 align-items-end">
+                <div class="search-date">
+                        <h4>人物検索</h4>
+                        <input type="search" class="form-control" name="data_name"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="チームメイトを検索">
+                </div>
+                <input type="submit" value="検索">
+            </form>
     <table class="table table-bordered table-hover ">
      <thead class="bg-info text-light">
           <tr>
               <th scope="col">日付</th>
+              <th scope="col">名前</th>
               <th scope="col">朝体温</th>
               <th scope="col">脈拍<br>(20秒)</th>
               <th scope="col">体重<br>(トレーニング前)</th>
@@ -55,6 +64,7 @@
             @foreach ($datas as $data)
             <tr>
               <td><a href="{{ route('showData',$data->id) }}"> {{ $data->created_at }} <br>トレーニング内容</a></td>
+              <td> {{ $data->name }} </td>
               <td> {{ $data->bt }} </td>
               <td> {{ $data->pulse }} </td>
               <td> {{ $data->Trb_bw }}</td>

@@ -13,7 +13,7 @@
     </div>
     <div class="container pt-5 pb-5">
         <div class="pb-2">
-        <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex justify-container-flex-end align-items-top mb-5">
+        <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex justify-container-flex-end align-items-end mb-5">
                 <div class="search-date mr-5">
                     <h4>トレーニング日付検索</h4>
                     <input type="date" name="training_date" value="{{ $training_date }}">
@@ -39,17 +39,26 @@
                 <div class="search_training mr-5">
                     <h4>トレーニング内容検索</h4>
                     <input type="search" name="search_training"  value="{{ $search_training }}" placeholder="トレーニング内容">
-                </div> 
+                </div>
                 <input type="submit" class="ml-3 btn btn-primary" value="検索">
+            </form>
+
+            <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex mb-5 align-items-end">
+                <div class="search-date">
+                        <h4>人物検索</h4>
+                        <input type="search" class="form-control" name="data_name"  value="{{ $data_name }}" placeholder="チームメイトを検索">
+                </div>
+                <input type="submit" value="検索">
             </form>
         </div>
         <div class="d-flex">
-            <p><h4>{{ $training_date }}　{{ $training_fatigue }}　{{ $search_training }}</h4>　の検索結果</p>
+            <p><h4>{{ $training_date }}　{{ $training_fatigue }}　{{ $search_training }}　{{ $data_name }}</h4>　の検索結果</p>
         </div>
     <table class="table table-bordered table-hover ">
      <thead class="bg-info text-light">
           <tr>
               <th scope="col">日付</th>
+              <th scope="col">名前</th>
               <th scope="col">朝体温</th>
               <th scope="col">脈拍<br>(20秒)</th>
               <th scope="col">体重<br>(トレーニング前)</th>
@@ -61,6 +70,7 @@
             @foreach ($seaches as $seach)
             <tr>
               <td><a href="{{ route('showData',$seach->id) }}"> {{ $seach->created_at }} <br>トレーニング内容</a></td>
+              <td> {{ $seach->name }} </td>
               <td> {{ $seach->bt }} </td>
               <td> {{ $seach->pulse }} </td>
               <td> {{ $seach->Trb_bw }}</td>
