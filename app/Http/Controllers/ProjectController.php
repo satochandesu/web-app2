@@ -35,25 +35,31 @@ class ProjectController extends Controller
     public function store(StoreDatasRequest $request)
     {
         $profile = Profile::where('profile_id' , '=', Auth::id())->first();
-        DB::beginTransaction();
-        try{
-            $datas = Data::create([
-                'bt' => $request->bt,
-                'pulse' => $request->pulse,
-                'Trb_bw' => $request->Trb_bw,
-                'Tra_bw' => $request->Tra_bw,
-                'fatigue' => $request->fatigue,
-                'training' => $request->training,
-                'user_id' => Auth::id(),
-                'name' => $profile->profileName,
-            ]);
-            DB::commit();
-        }catch(\Exception $e){
-            DB::rollBack();
-            Log::debug($e);
-            abort(500);
+        if(isset($profile->profileName)){
+            DB::beginTransaction();
+            try{
+                $datas = Data::create([
+                    'bt' => $request->bt,
+                    'pulse' => $request->pulse,
+                    'Trb_bw' => $request->Trb_bw,
+                    'Tra_bw' => $request->Tra_bw,
+                    'fatigue' => $request->fatigue,
+                    'training' => $request->training,
+                    'user_id' => Auth::id(),
+                    'name' => $profile->profileName,
+                ]);
+                DB::commit();
+            }catch(\Exception $e){
+                DB::rollBack();
+                Log::debug($e);
+                abort(500);
+            }
+            return redirect()->route('record.index');
+        }else{
+            $alert = "<script type='text/javascript'>alert('プロフィールを先に設定してください。');</script>";
+            echo $alert;
+            return view('projects.viewProfile');
         }
-        return redirect()->route('record.index');
     }
 
     public function showData($id)
