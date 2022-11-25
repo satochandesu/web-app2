@@ -18,8 +18,8 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->double('bt',3,1);
             $table->integer('pulse')->length(2); 
-            $table->double('Trb_bw',3,1); 
-            $table->double('Tra_bw',3,1); 
+            $table->double('Trb_bw',4,1); 
+            $table->double('Tra_bw',4,1); 
             $table->integer('fatigue')->length(2);
             $table->string('training'); 
             $table->timestamps();

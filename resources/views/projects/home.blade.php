@@ -41,7 +41,7 @@
                            <div class="form-group d-flex flex-column flex-md-row mt-3">
                                 <label for="Trb_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング前)　</label>
                                 <div class="col-md-6">
-                                    <input id="Trb_bw" type="text" class="form-control @error('Trb_bw') is-invalid @enderror" name="Trb_bw"  value ="{{ old('Trb_bw') }}" required autocomplete="Trb_bw" autofocus>
+                                    <input id="Trb_bw" type="Trb_bw" class="form-control @error('Trb_bw') is-invalid @enderror" name="Trb_bw" value ="{{ old('Trb_bw') }}" required autocomplete="Trb_bw" autofocus>
                                     @error('Trb_bw')
                                       <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

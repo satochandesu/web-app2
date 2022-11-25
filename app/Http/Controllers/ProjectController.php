@@ -35,19 +35,25 @@ class ProjectController extends Controller
     public function store(StoreDatasRequest $request)
     {
         $profile = Profile::where('profile_id' , '=', Auth::id())->first();
-        if(isset($profile->profileName)){
-            DB::beginTransaction();
+        DB::beginTransaction();
             try{
-                $datas = Data::create([
-                    'bt' => $request->bt,
-                    'pulse' => $request->pulse,
-                    'Trb_bw' => $request->Trb_bw,
-                    'Tra_bw' => $request->Tra_bw,
-                    'fatigue' => $request->fatigue,
-                    'training' => $request->training,
-                    'user_id' => Auth::id(),
-                    'name' => $profile->profileName,
-                ]);
+                if(isset($profile->profileName)){
+                    $datas = Data::create([
+                        'bt' => $request->bt,
+                        'pulse' => $request->pulse,
+                        'Trb_bw' => $request->Trb_bw,
+                        'Tra_bw' => $request->Tra_bw,
+                        'fatigue' => $request->fatigue,
+                        'training' => $request->training,
+                        'user_id' => Auth::id(),
+                        'name' => $profile->profileName,
+                    ]);
+                }
+                else{
+                        $alert = "<script type='text/javascript'>alert('プロフィールを先に設定してください。');</script>";
+                        echo $alert;
+                        return view('projects.viewProfile');
+                    }
                 DB::commit();
             }catch(\Exception $e){
                 DB::rollBack();
@@ -55,11 +61,6 @@ class ProjectController extends Controller
                 abort(500);
             }
             return redirect()->route('record.index');
-        }else{
-            $alert = "<script type='text/javascript'>alert('プロフィールを先に設定してください。');</script>";
-            echo $alert;
-            return view('projects.viewProfile');
-        }
     }
 
     public function showData($id)

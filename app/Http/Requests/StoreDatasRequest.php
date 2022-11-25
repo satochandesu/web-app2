@@ -26,9 +26,9 @@ class StoreDatasRequest extends FormRequest
         return [
             //
                 'bt' => 'required|numeric|between:35.0,41.0',
-                'pulse' => 'required|integer|min:0',
-                'Trb_bw' => 'required|numeric|min:0',
-                'Tra_bw' => 'required|numeric|between:10,100',
+                'pulse' => 'required|integer|between:10,20',
+                'Trb_bw' => 'required|numeric|between:10,300',
+                'Tra_bw' => 'required|numeric|between:10,300',
                 'fatigue' => 'required|integer|between:0,10',
                 'training' => 'required|string',
                 
