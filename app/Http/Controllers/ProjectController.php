@@ -223,6 +223,7 @@ class ProjectController extends Controller
         $training_fatigue = $request->input('training_fatigue');
         $search_training = $request->input('search_training');
         $data_name = $request->input('data_name');
+
         
         if (isset($training_date)) {
             $query->where('user_id', 'LIKE', "%{$id}%");
@@ -239,8 +240,10 @@ class ProjectController extends Controller
             $query->where('training', 'LIKE', "%{$search_training}%")->get();
         }
 
-        if (isset($data_name)) {
+        if (null == $training_date && null == $training_fatigue && null == $search_training && $data_name) {
             $query->where('name', 'LIKE', "%{$data_name}%")->get();
+        }elseif(null == $training_date && null == $training_fatigue && null == $search_training){
+            $query->where('user_id', 'LIKE', "%{$id}%");
         }
         
         $seaches = $query->get();

@@ -36,7 +36,7 @@
                 
                 <div class="search_training mr-5">
                     <h4>トレーニング内容検索</h4>
-                    <input type="search" name="search_training"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="トレーニング内容">
+                    <input type="search" name="search_training"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="トレーニング内容" >
                 </div> 
                 <input type="submit" class="ml-3 btn btn-primary" value="検索">
             </form>

@@ -54,28 +54,28 @@
         <div class="d-flex">
             <p><h4>{{ $training_date }}　{{ $training_fatigue }}　{{ $search_training }}　{{ $data_name }}</h4>　の検索結果</p>
         </div>
-    <table class="table table-bordered table-hover ">
-     <thead class="bg-info text-light">
-          <tr>
-              <th scope="col">日付</th>
-              <th scope="col">名前</th>
-              <th scope="col">朝体温</th>
-              <th scope="col">脈拍<br>(20秒)</th>
-              <th scope="col">体重<br>(トレーニング前)</th>
-              <th scope="col">体重<br>(トレーニング後)</th>
-              <th scope="col">疲労度<br>(1~10)</th>
-          </tr>
-      </thead>
-      <tbody>
-            @foreach ($seaches as $seach)
+        <table class="table table-bordered table-hover ">
+        <thead class="bg-info text-light">
             <tr>
-              <td><a href="{{ route('showData',$seach->id) }}"> {{ $seach->created_at }} <br>トレーニング内容</a></td>
-              <td> {{ $seach->name }} </td>
-              <td> {{ $seach->bt }} </td>
-              <td> {{ $seach->pulse }} </td>
-              <td> {{ $seach->Trb_bw }}</td>
-              <td> {{ $seach->Tra_bw }}</td>
-              <td> {{ $seach->fatigue }}</td>
+                <th scope="col">日付</th>
+                <th scope="col">名前</th>
+                <th scope="col">朝体温</th>
+                <th scope="col">脈拍<br>(20秒)</th>
+                <th scope="col">体重<br>(トレーニング前)</th>
+                <th scope="col">体重<br>(トレーニング後)</th>
+                <th scope="col">疲労度<br>(1~10)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($seaches as $data)
+            <tr>
+              <td><a href="{{ route('showData',$data->id) }}"> {{ $data->created_at }} <br>トレーニング内容</a></td>
+              <td> {{ $data->name }} </td>
+              <td> {{ $data->bt }} </td>
+              <td> {{ $data->pulse }} </td>
+              <td> {{ $data->Trb_bw }}</td>
+              <td> {{ $data->Tra_bw }}</td>
+              <td> {{ $data->fatigue }}</td>
             </tr>
             @endforeach
       </tbody>
