@@ -1,6 +1,9 @@
 body{
     background-color: #f5f5f5;
 }
+.display{
+    display: none;
+}
 .top-page{
     text-align: center;
     color: white;
@@ -46,4 +49,17 @@ select,input{
 .posts-card{
     padding: 1rem 2rem;
     background-color: white;
+}
+#data_btn{
+    margin: -2rem 0 1rem;
+}
+#personal_data_btn{
+    background-color: white;
+    padding: .25rem .5rem;
+    cursor: pointer;
+}
+#other_data_btn{
+    background-color: gray;
+    padding: .25rem .5rem;
+    cursor: pointer;
 }

@@ -29,7 +29,8 @@ class ProjectController extends Controller
 
     public function record(){
         $datas = Auth::user()->datas->all();
-        return view('projects.index',compact('datas'));
+        $AllDatas = Data::all();
+        return view('projects.index',compact('datas','AllDatas'));
     }
 
     public function store(StoreDatasRequest $request)
@@ -219,36 +220,48 @@ class ProjectController extends Controller
     public function search(Request $request, $id)
     {
         $query = Data::query();
+        $data_name = $request->input('data_name');
         $training_date = $request->input('training_date');
         $training_fatigue = $request->input('training_fatigue');
         $search_training = $request->input('search_training');
-        $data_name = $request->input('data_name');
 
+        $All_data_name = $request->input('All_data_name');
+        $All_training_date = $request->input('All_training_date');
+        $All_training_fatigue = $request->input('All_training_fatigue');
+        $All_search_training = $request->input('All_search_training');
+        
+        $datas = Auth::user()->datas->all();
         
         if (isset($training_date)) {
             $query->where('user_id', 'LIKE', "%{$id}%");
             $query->where('created_at', 'LIKE', "%{$training_date}%");
+        }elseif(isset($All_training_date)) {
+            $query->where('created_at', 'LIKE', "%{$All_training_date}%");
         }
 
         if (isset($training_fatigue)) {
             $query->where('user_id', 'LIKE', "%{$id}%");
             $query->where('fatigue', $training_fatigue);
+        }elseif(isset($All_training_fatigue)) {
+            $query->where('fatigue', 'LIKE', "%{$All_training_fatigue}%");
         }
 
         if (isset($search_training)) {
             $query->where('user_id', 'LIKE', "%{$id}%");
             $query->where('training', 'LIKE', "%{$search_training}%")->get();
+        }elseif (isset($All_search_training)) {
+            $query->where('training', 'LIKE', "%{$All_search_training}%");
         }
-
-        if (null == $training_date && null == $training_fatigue && null == $search_training && $data_name) {
+        if (isset($data_name)) {
             $query->where('name', 'LIKE', "%{$data_name}%")->get();
-        }elseif(null == $training_date && null == $training_fatigue && null == $search_training){
-            $query->where('user_id', 'LIKE', "%{$id}%");
+        }elseif (isset($All_data_name)) {
+            $query->where('name', 'LIKE', "%{$All_data_name}%");
         }
-        
         $seaches = $query->get();
-        return view('projects.searchResult', compact('training_date', 'training_fatigue','search_training','seaches','data_name'));
+        return view('projects.searchResult', compact('training_date', 'training_fatigue','search_training','seaches','data_name','datas'
+                                                    ,'All_training_date','All_training_fatigue','All_search_training','All_data_name'));
 
     }
+
 }
 
