@@ -24,22 +24,22 @@
                 <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex align-items-end mb-5">
                     <div class="search-date mr-5">
                         <h5>トレーニング日付検索</h5>
-                        <input type="date" class="form-control" name="training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
+                        <input type="date" class="form-control" name="training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif">
                     </div>
                     <div class="search-fatigue mr-5">
                         <h5>疲労度検索</h5>
                         <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="training_fatigue" autocomplete="new-fatigue" id="fatigue" name="fatigue">
                             <option></option>
-                            <option value="1" @if( old('fatigue') ==  "1") selected @endif>1</option>
-                            <option value="2" @if( old('fatigue') ==  "2") selected @endif>2</option>
-                            <option value="3" @if( old('fatigue') ==  "3") selected @endif>3</option>
-                            <option value="4" @if( old('fatigue') ==  "4") selected @endif>4</option>
-                            <option value="5" @if( old('fatigue') ==  "5") selected @endif>5</option>
-                            <option value="6" @if( old('fatigue') ==  "6") selected @endif>6</option>
-                            <option value="7" @if( old('fatigue') ==  "7") selected @endif>7</option>
-                            <option value="8" @if( old('fatigue') ==  "8") selected @endif>8</option>
-                            <option value="9" @if( old('fatigue') ==  "9") selected @endif>9</option>
-                            <option value="10" @if( old('fatigue') ==  "10") selected @endif>10</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
                     </div>
                     
