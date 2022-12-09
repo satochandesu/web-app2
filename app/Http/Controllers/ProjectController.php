@@ -220,7 +220,6 @@ class ProjectController extends Controller
     public function search(Request $request, $id)
     {
         $query = Data::query();
-        $data_name = $request->input('data_name');
         $training_date = $request->input('training_date');
         $training_fatigue = $request->input('training_fatigue');
         $search_training = $request->input('search_training');
@@ -252,13 +251,11 @@ class ProjectController extends Controller
         }elseif (isset($All_search_training)) {
             $query->where('training', 'LIKE', "%{$All_search_training}%");
         }
-        if (isset($data_name)) {
-            $query->where('name', 'LIKE', "%{$data_name}%")->get();
-        }elseif (isset($All_data_name)) {
+        if (isset($All_data_name)) {
             $query->where('name', 'LIKE', "%{$All_data_name}%");
         }
         $seaches = $query->get();
-        return view('projects.searchResult', compact('training_date', 'training_fatigue','search_training','seaches','data_name','datas'
+        return view('projects.searchResult', compact('training_date', 'training_fatigue','search_training','seaches','datas'
                                                     ,'All_training_date','All_training_fatigue','All_search_training','All_data_name'));
 
     }

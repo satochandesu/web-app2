@@ -45,7 +45,7 @@
                     
                     <div class="search_training mr-5">
                         <h5>トレーニング内容検索</h5>
-                        <input type="search" name="search_training"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="トレーニング内容" >
+                        <input type="search" class="form-control" name="search_training" value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="トレーニング内容" >
                     </div> 
                     <input type="submit" class="ml-3 btn btn-primary" value="検索">
                 </form>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="search-date mr-5">
                         <h5>トレーニング日付検索</h5>
-                        <input type="date" class="form-control" name="All_training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="日時検索は 年-月-日">
+                        <input type="date" class="form-control" name="All_training_date"  value="@if (isset($keyword)) {{ $keyword }} @endif">
                     </div>
                     <div class="search-fatigue mr-5">
                         <h5>疲労度検索</h5>
@@ -80,7 +80,7 @@
                     
                     <div class="search_training mr-5">
                         <h5>トレーニング内容検索</h5>
-                        <input type="search" name="All_search_training"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="トレーニング内容" >
+                        <input type="search" class="form-control" name="All_search_training"  value="@if (isset($keyword)) {{ $keyword }} @endif" placeholder="トレーニング内容" >
                     </div> 
                     <input type="submit" class="ml-3 btn btn-primary" value="全データ検索">
                 </form>

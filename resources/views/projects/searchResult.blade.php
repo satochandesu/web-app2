@@ -16,16 +16,18 @@
         <div id ="AllSearch" class="mt-3 mb-3">
                 <form action="{{ route('search',Auth::user()->id) }}" method="GET" class="d-flex align-items-end mb-3">
                     <div class="search-date mr-5">
-                            <h4>人物検索</h4>
-                            <input type="search" class="form-control" name="All_data_name"  value="@if (isset($All_data_name)) {{ $All_data_name }} @endif" placeholder="自分orチームメイトを検索">
+                        <h4>他データ人物検索</h4>
+                        
+                        <input type="search" class="form-control" name="All_data_name"  value="@if (isset($All_data_name)) {{ $All_data_name }} @endif"  placeholder="チームメイトを検索">
                     </div>
                     <div class="search-date mr-5">
                         <h4>トレーニング日付検索</h4>
-                        <input type="date" class="form-control" name="All_training_date" value="@if (isset($All_training_date)) {{ $All_training_date }} @elseif (isset($training_date)) {{ $training_date }} @endif">
+                        <!-- ↓　valueのところ→半角スペースを空けずに記述したら反応した？！ -->
+                        <input type="date" class="form-control" name="All_training_date" value="@if(isset($training_date)){{$training_date}}@elseif(isset($All_training_date)){{$All_training_date}}@endif">
                     </div>
                     <div class="search-fatigue mr-5">
                         <h4>疲労度検索</h4>
-                        <select type="fatigue" class="form-control  @error('fatigue') is-invalid @enderror" name="All_training_fatigue" autocomplete="new-fatigue" id="All_fatigue" name="All_fatigue">
+                        <select type="fatigue" class="form-control" name="All_training_fatigue" autocomplete="new-fatigue" id="All_fatigue" name="All_fatigue">
                             <option>@if(isset($training_fatigue)){{ $training_fatigue }}@elseif(isset($All_training_fatigue)){{ $All_training_fatigue }}@endif</option>
                             <option></option>
                             <option value="1" @if( old('fatigue') ==  "1") selected @endif>1</option>
@@ -43,7 +45,7 @@
                     
                     <div class="search_training mr-5">
                         <h4>トレーニング内容検索</h4>
-                        <input type="search" name="All_search_training"  value="@if (isset($All_search_training)) {{ $All_search_training }} @elseif (isset($search_training)) {{ $search_training }} @endif" placeholder="トレーニング内容" >
+                        <input type="search" class="form-control" name="All_search_training"  value="@if(null == $search_training && !null == $All_search_training) {{$All_search_training}} @elseif(null == $All_search_training && !null == $search_training) {{$search_training}}  @endif" placeholder="トレーニング内容" >
                     </div> 
                     <input type="submit" id ="AllSearch" class="ml-3 btn btn-primary" value="全データ検索">
                 </form>
