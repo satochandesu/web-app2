@@ -16,7 +16,7 @@
                            @csrf
                            <div class="form-group d-flex flex-column flex-md-row">
                                 <label for="bt" class="col-md-4 col-form-label text-md-right">体温(朝)　</label>
-                                <div class="col-md-6">
+                                <div class="col-md-1">
                                     <input id="bt" type="bt" class="form-control  @error('bt') is-invalid @enderror" name="bt"
                                     value="{{ old('bt') }}" required autocomplete="new-bt">
                                     @error('bt')
@@ -29,7 +29,7 @@
 
                             <div class="form-group d-flex flex-column flex-md-row mt-1">
                                 <label for="pulse" class="col-md-4 col-form-label text-md-right">朝の脈拍(20秒)　</label>
-                                <div class="col-md-6">
+                                <div class="col-md-1">
                                     <input id="pulse" type="pulse" class="form-control  @error('pulse') is-invalid @enderror" 
                                     value="{{ old('pulse') }}" name="pulse" required autocomplete="new-pulse">
                                     @error('pulse')
@@ -42,7 +42,7 @@
 
                            <div class="form-group d-flex flex-column flex-md-row mt-3">
                                 <label for="Trb_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング前)　</label>
-                                <div class="col-md-6">
+                                <div class="col-md-1">
                                     <input id="Trb_bw" type="text" class="form-control @error('Trb_bw') is-invalid @enderror" 
                                     value="{{ old('Trb_bw') }}" name="Trb_bw" required autocomplete="Trb_bw" autofocus>
                                     @error('Trb_bw')
@@ -55,7 +55,7 @@
 
                             <div class="form-group d-flex flex-column flex-md-row mt-1">
                                 <label for="Tra_bw" class="col-md-4 col-form-label text-md-right">体重(トレーニング後)　</label>
-                                <div class="col-md-6">
+                                <div class="col-md-1">
                                     <input id="Tra_bw" type="Tra_bw" class="form-control @error('Tra_bw') is-invalid @enderror" 
                                     value="{{ old('Tra_bw') }}" name="Tra_bw" required autocomplete="Tra_bw" autofocus>
                                     @error('Tra_bw')
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group d-flex justify-content-center mt-3 mb-0">
+                            <div class="form-group d-flex justify-content-end mt-3">
                             <a class="btn btn-secondary mr-2" href="{{ route('record.index') }}">
                                 キャンセル
                             </a>
