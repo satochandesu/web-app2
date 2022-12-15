@@ -104,8 +104,8 @@
               <th scope="col">疲労度<br>(1~10)</th>
           </tr>
       </thead>
-      <div id="personal_data_table">
-      <tbody>
+
+      <tbody id="personal_data_table">
             @foreach ($datas as $data)
             <tr>
               <td><a href="{{ route('showData',$data->id) }}"> {{ $data->created_at }} <br>トレーニング内容</a></td>
@@ -118,18 +118,17 @@
             </tr>
             @endforeach
       </tbody>
-      </div>
-      
+
       <tbody id="other_data_table" class="display">
-            @foreach ($AllDatas as $data)
+            @foreach ($AllDatas as $datas)
             <tr>
-              <td><a href="{{ route('showData',$data->id) }}"> {{ $data->created_at }} <br>トレーニング内容</a></td>
-              <td> {{ $data->name }} </td>
-              <td class="pc-data"> {{ $data->bt }} </td>
-              <td class="pc-data"> {{ $data->pulse }} </td>
-              <td> {{ $data->Trb_bw }}</td>
-              <td> {{ $data->Tra_bw }}</td>
-              <td> {{ $data->fatigue }}</td>
+              <td><a href="{{ route('showData',$datas->id) }}"> {{ $datas->created_at }} <br>トレーニング内容</a></td>
+              <td> {{ $datas->name }} </td>
+              <td class="pc-data"> {{ $datas->bt }} </td>
+              <td class="pc-data"> {{ $datas->pulse }} </td>
+              <td> {{ $datas->Trb_bw }}</td>
+              <td> {{ $datas->Tra_bw }}</td>
+              <td> {{ $datas->fatigue }}</td>
             </tr>
             @endforeach
       </tbody>
